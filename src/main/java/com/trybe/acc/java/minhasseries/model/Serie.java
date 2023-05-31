@@ -15,6 +15,7 @@ public class Serie {
   private String nome;
   private List<Episodio> episodios;
 
+  /** Método construtor. */
   public Serie(String nome) {
     this.nome = nome;
   }

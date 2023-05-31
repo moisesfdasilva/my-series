@@ -14,6 +14,7 @@ public class Episodio {
   private Integer numero;
   private Integer duracaoEmMinutos;
 
+  /** Método construtor. */
   public Episodio(Long id, Integer numero, Integer duracaoEmMinutos) {
     this.id = id;
     this.numero = numero;
