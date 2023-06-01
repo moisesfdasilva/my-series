@@ -1,5 +1,6 @@
 package com.trybe.acc.java.minhasseries.service;
 
+import com.trybe.acc.java.minhasseries.model.Episodio;
 import com.trybe.acc.java.minhasseries.model.Serie;
 import com.trybe.acc.java.minhasseries.repository.SerieRepository;
 import java.util.List;
@@ -31,6 +32,18 @@ public class MinhasSeriesService {
       result = null;
     }
     return result;
+  }
+
+  public Serie addEpisodio(Long id, Episodio episodio) {
+    Serie serieExistente = serieRepository.findById(id).orElse(null);
+    if (serieExistente != null) {
+      episodio.setSerie(serieExistente);
+      serieExistente.setEpisodio(episodio);
+      Serie serieAtualizada = serieRepository.save(serieExistente);
+      return serieAtualizada;
+    } else {
+      return serieExistente;
+    }
   }
 
   public void getById(Long id) {

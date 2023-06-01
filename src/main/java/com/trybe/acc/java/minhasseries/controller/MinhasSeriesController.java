@@ -39,15 +39,10 @@ public class MinhasSeriesController {
   }
 
   @PostMapping("/series/{id}/episodios")
-  public ResponseEntity<String> addEpisodios(@PathVariable("id") Long id,
-      @RequestBody List<Episodio> episodios) {
-
-    System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-    System.out.println(id);
-    System.out.println(episodios);
-    System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-
-    return ResponseEntity.ok("serieAdicionada");
+  public ResponseEntity<Serie> addEpisodio(@PathVariable("id") Long id,
+      @RequestBody Episodio episodio) {
+    Serie serieExistente = minhasSeriesService.addEpisodio(id, episodio);
+    return ResponseEntity.ok(serieExistente);
   }
 
 }

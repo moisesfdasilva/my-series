@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Serie {
@@ -18,6 +19,7 @@ public class Serie {
   private Long id;
   private String nome;
 
+  @JsonManagedReference
   @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL,
       orphanRemoval = true, fetch = FetchType.LAZY)
   private List<Episodio> episodios;
@@ -53,6 +55,10 @@ public class Serie {
 
   public void setEpisodios(List<Episodio> episodios) {
     this.episodios = episodios;
+  }
+
+  public void setEpisodio(Episodio episodio) {
+    this.episodios.add(episodio);
   }
 
 }

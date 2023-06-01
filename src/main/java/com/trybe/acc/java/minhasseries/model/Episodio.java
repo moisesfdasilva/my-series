@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Episodio {
@@ -16,9 +17,13 @@ public class Episodio {
   private Integer numero;
   private Integer duracaoEmMinutos;
 
+  @JsonBackReference
   @ManyToOne
   @JoinColumn(name = "serie_id")
   private Serie serie;
+
+  /** Método construtor default. */
+  public Episodio() { }
 
   /** Método construtor. */
   public Episodio(Integer numero, Integer duracaoEmMinutos) {
