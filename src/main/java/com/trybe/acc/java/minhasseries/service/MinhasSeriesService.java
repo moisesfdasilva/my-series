@@ -12,8 +12,9 @@ public class MinhasSeriesService {
   @Autowired
   private SerieRepository serieRepository;
 
-  public void addSerie(String nome) {
-    serieRepository.save(null);
+  public Serie addSerie(String name) {
+    Serie serieAdicionada = serieRepository.save(new Serie(name));
+    return serieAdicionada;
   }
 
   public List<Serie> getAllSeries() {

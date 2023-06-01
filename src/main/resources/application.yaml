@@ -1,0 +1,14 @@
+server:
+    port: 8080
+
+spring:
+    datasource:
+        url: jdbc:h2:mem:speciality_database
+        username: speciality-app
+        password: speciality-app!
+
+logging:
+  level:
+    root: INFO
+  file: ./logs/speciality-app.log
+  

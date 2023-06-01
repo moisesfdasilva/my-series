@@ -4,15 +4,21 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Episodio {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   private Integer numero;
   private Integer duracaoEmMinutos;
+
+  @ManyToOne
+  @JoinColumn(name = "serie_id")
+  private Serie serie;
 
   /** Método construtor. */
   public Episodio(Long id, Integer numero, Integer duracaoEmMinutos) {
@@ -43,6 +49,14 @@ public class Episodio {
 
   public void setDuracaoEmMinutos(Integer duracaoEmMinutos) {
     this.duracaoEmMinutos = duracaoEmMinutos;
+  }
+
+  public Serie getSerie() {
+    return serie;
+  }
+
+  public void setSerie(Serie serie) {
+    this.serie = serie;
   }
 
 }
