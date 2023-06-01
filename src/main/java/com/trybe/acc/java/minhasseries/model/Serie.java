@@ -57,7 +57,7 @@ public class Serie {
     this.episodios = episodios;
   }
 
-  public void setEpisodio(Episodio episodio) {
+  public void adicionarEpisodio(Episodio episodio) {
     this.episodios.add(episodio);
   }
 

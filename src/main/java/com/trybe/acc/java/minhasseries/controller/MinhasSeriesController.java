@@ -45,4 +45,10 @@ public class MinhasSeriesController {
     return ResponseEntity.ok(serieExistente);
   }
 
+  @GetMapping("/series/{id}/episodios")
+  public ResponseEntity<List<Episodio>> getEpisodios(@PathVariable("id") Long id) {
+    List<Episodio> episodios = minhasSeriesService.getEpisodios(id);
+    return ResponseEntity.ok(episodios);
+  }
+
 }

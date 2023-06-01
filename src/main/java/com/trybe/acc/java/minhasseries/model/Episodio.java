@@ -25,10 +25,18 @@ public class Episodio {
   /** Método construtor default. */
   public Episodio() { }
 
-  /** Método construtor. */
+  /** Método construtor com numero e duração. */
   public Episodio(Integer numero, Integer duracaoEmMinutos) {
     this.numero = numero;
     this.duracaoEmMinutos = duracaoEmMinutos;
+  }
+
+  /** Método construtor. */
+  public Episodio(Long id, Integer numero, Integer duracaoEmMinutos, Serie serie) {
+    this.id = id;
+    this.numero = numero;
+    this.duracaoEmMinutos = duracaoEmMinutos;
+    this.serie = serie;
   }
 
   public Long getId() {

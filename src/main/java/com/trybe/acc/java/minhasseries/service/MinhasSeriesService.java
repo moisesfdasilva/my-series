@@ -38,7 +38,7 @@ public class MinhasSeriesService {
     Serie serieExistente = serieRepository.findById(id).orElse(null);
     if (serieExistente != null) {
       episodio.setSerie(serieExistente);
-      serieExistente.setEpisodio(episodio);
+      serieExistente.adicionarEpisodio(episodio);
       Serie serieAtualizada = serieRepository.save(serieExistente);
       return serieAtualizada;
     } else {
@@ -46,6 +46,16 @@ public class MinhasSeriesService {
     }
   }
 
+  public List<Episodio> getEpisodios(Long id) {
+    Serie serieExistente = serieRepository.findById(id).orElse(null);
+    if (serieExistente != null) {
+      List<Episodio> episodios = serieExistente.getEpisodios();
+      return episodios;
+    } else {
+      return null;
+    }
+  }
+  
   public void getById(Long id) {
     serieRepository.findById(id);
   }
