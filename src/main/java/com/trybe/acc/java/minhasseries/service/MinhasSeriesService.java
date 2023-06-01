@@ -22,9 +22,15 @@ public class MinhasSeriesService {
     return allSeries;
   }
 
-  public void delete(Long id) {
-    serieRepository.findById(id);
-    serieRepository.delete(null);
+  public Long delete(Long id) {
+    Serie serieExistente = serieRepository.findById(id).orElse(null);
+    Long result = id;
+    if (serieExistente != null) {
+      serieRepository.delete(serieExistente);      
+    } else {
+      result = null;
+    }
+    return result;
   }
 
   public void getById(Long id) {
