@@ -20,6 +20,7 @@ public class MinhasSeriesController {
   @Autowired
   private MinhasSeriesService minhasSeriesService;
 
+  /** Método addSérie. */
   @PostMapping("/series")
   public ResponseEntity<Serie> addSerie(@RequestBody Serie serie) {
     String name = serie.getNome();

@@ -1,5 +1,8 @@
 package com.trybe.acc.java.minhasseries.service;
 
+import com.trybe.acc.java.minhasseries.exception.EpisodioExistenteException;
+import com.trybe.acc.java.minhasseries.exception.SerieExistenteException;
+import com.trybe.acc.java.minhasseries.exception.SerieNaoEncontradaException;
 import com.trybe.acc.java.minhasseries.model.Episodio;
 import com.trybe.acc.java.minhasseries.model.Serie;
 import com.trybe.acc.java.minhasseries.repository.SerieRepository;
@@ -15,39 +18,58 @@ public class MinhasSeriesService {
   @Autowired
   private SerieRepository serieRepository;
 
+  /** Método addSérie.*/
   public Serie addSerie(String name) {
-    Serie serieAdicionada = serieRepository.save(new Serie(name));
-    return serieAdicionada;
+    List<Serie> serieExistente = serieRepository.findAll().stream()
+        .filter(serie -> serie.getNome().equals(name))
+        .collect(Collectors.toList());
+    if (serieExistente.size() == 0) {
+      Serie serieAdicionada = serieRepository.save(new Serie(name));
+      return serieAdicionada;      
+    } else {
+      throw new SerieExistenteException();
+    }
   }
 
+  /** Método getAllSeries.*/
   public List<Serie> getAllSeries() {
     List<Serie> allSeries = serieRepository.findAll();
     return allSeries;
   }
 
+  /** Método delete.*/
   public Long delete(Long id) {
     Serie serieExistente = serieRepository.findById(id).orElse(null);
     Long result = id;
     if (serieExistente != null) {
       serieRepository.delete(serieExistente);      
     } else {
-      result = null;
+      throw new SerieNaoEncontradaException();
     }
     return result;
   }
 
+  /** Método addEpisodio.*/
   public Serie addEpisodio(Long id, Episodio episodio) {
     Serie serieExistente = serieRepository.findById(id).orElse(null);
     if (serieExistente != null) {
-      episodio.setSerie(serieExistente);
-      serieExistente.adicionarEpisodio(episodio);
-      Serie serieAtualizada = serieRepository.save(serieExistente);
-      return serieAtualizada;
+      List<Episodio> episodioExistente = serieExistente.getEpisodios().stream()
+          .filter(ep -> ep.getNumero().equals(episodio.getNumero()))
+          .collect(Collectors.toList());
+      if (episodioExistente.size() > 0) {
+        throw new EpisodioExistenteException();
+      } else {
+        episodio.setSerie(serieExistente);
+        serieExistente.adicionarEpisodio(episodio);
+        Serie serieAtualizada = serieRepository.save(serieExistente);
+        return serieAtualizada;
+      }
     } else {
-      return serieExistente;
+      throw new SerieNaoEncontradaException();
     }
   }
 
+  /** Método getEpisodios.*/
   public List<Episodio> getEpisodios(Long id) {
     Serie serieExistente = serieRepository.findById(id).orElse(null);
     if (serieExistente != null) {
@@ -57,9 +79,9 @@ public class MinhasSeriesService {
       return null;
     }
   }
-  
+
+  /** Método getTempo.*/
   public HashMap<String, Integer> getTempo() {
-    serieRepository.findAll();
     List<Serie> allSeries = serieRepository.findAll();
     List<Episodio> allEpisodios = allSeries.stream()
         .flatMap(serie -> serie.getEpisodios().stream())
