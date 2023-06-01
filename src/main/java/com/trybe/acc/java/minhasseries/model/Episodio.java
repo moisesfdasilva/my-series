@@ -13,7 +13,7 @@ public class Episodio {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  private Integer id;
   private Integer numero;
   private Integer duracaoEmMinutos;
 
@@ -32,18 +32,18 @@ public class Episodio {
   }
 
   /** Método construtor. */
-  public Episodio(Long id, Integer numero, Integer duracaoEmMinutos, Serie serie) {
+  public Episodio(Integer id, Integer numero, Integer duracaoEmMinutos, Serie serie) {
     this.id = id;
     this.numero = numero;
     this.duracaoEmMinutos = duracaoEmMinutos;
     this.serie = serie;
   }
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 

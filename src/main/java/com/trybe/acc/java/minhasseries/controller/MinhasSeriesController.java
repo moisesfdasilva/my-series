@@ -35,20 +35,20 @@ public class MinhasSeriesController {
   }
 
   @DeleteMapping("/series/{id}")
-  public ResponseEntity<String> removeSerie(@PathVariable("id") Long id) {
-    Long idRemovido = minhasSeriesService.delete(id);
+  public ResponseEntity<String> removeSerie(@PathVariable("id") Integer id) {
+    Integer idRemovido = minhasSeriesService.delete(id);
     return ResponseEntity.ok("Id removido: " + idRemovido);
   }
 
   @PostMapping("/series/{id}/episodios")
-  public ResponseEntity<Serie> addEpisodio(@PathVariable("id") Long id,
+  public ResponseEntity<Serie> addEpisodio(@PathVariable("id") Integer id,
       @RequestBody Episodio episodio) {
     Serie serieExistente = minhasSeriesService.addEpisodio(id, episodio);
     return ResponseEntity.ok(serieExistente);
   }
 
   @GetMapping("/series/{id}/episodios")
-  public ResponseEntity<List<Episodio>> getEpisodios(@PathVariable("id") Long id) {
+  public ResponseEntity<List<Episodio>> getEpisodios(@PathVariable("id") Integer id) {
     List<Episodio> episodios = minhasSeriesService.getEpisodios(id);
     return ResponseEntity.ok(episodios);
   }

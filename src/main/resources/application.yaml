@@ -11,4 +11,12 @@ logging:
   level:
     root: INFO
   file: ./logs/speciality-app.log
-  
+
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      waitDurationInOpenState: 10s
+      failureRateThreshold: 10
+  instances:
+    estudantes:
+      baseConfig: default

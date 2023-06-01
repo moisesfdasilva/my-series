@@ -38,9 +38,9 @@ public class MinhasSeriesService {
   }
 
   /** Método delete.*/
-  public Long delete(Long id) {
+  public Integer delete(Integer id) {
     Serie serieExistente = serieRepository.findById(id).orElse(null);
-    Long result = id;
+    Integer result = id;
     if (serieExistente != null) {
       serieRepository.delete(serieExistente);      
     } else {
@@ -50,7 +50,7 @@ public class MinhasSeriesService {
   }
 
   /** Método addEpisodio.*/
-  public Serie addEpisodio(Long id, Episodio episodio) {
+  public Serie addEpisodio(Integer id, Episodio episodio) {
     Serie serieExistente = serieRepository.findById(id).orElse(null);
     if (serieExistente != null) {
       List<Episodio> episodioExistente = serieExistente.getEpisodios().stream()
@@ -70,7 +70,7 @@ public class MinhasSeriesService {
   }
 
   /** Método getEpisodios.*/
-  public List<Episodio> getEpisodios(Long id) {
+  public List<Episodio> getEpisodios(Integer id) {
     Serie serieExistente = serieRepository.findById(id).orElse(null);
     if (serieExistente != null) {
       List<Episodio> episodios = serieExistente.getEpisodios();
