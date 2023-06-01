@@ -3,6 +3,7 @@ package com.trybe.acc.java.minhasseries.controller;
 import com.trybe.acc.java.minhasseries.model.Episodio;
 import com.trybe.acc.java.minhasseries.model.Serie;
 import com.trybe.acc.java.minhasseries.service.MinhasSeriesService;
+import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -49,6 +50,12 @@ public class MinhasSeriesController {
   public ResponseEntity<List<Episodio>> getEpisodios(@PathVariable("id") Long id) {
     List<Episodio> episodios = minhasSeriesService.getEpisodios(id);
     return ResponseEntity.ok(episodios);
+  }
+
+  @GetMapping("/series/tempo")
+  public ResponseEntity<HashMap<String, Integer>> getTempo() {
+    HashMap<String, Integer> tempo = minhasSeriesService.getTempo();
+    return ResponseEntity.ok(tempo);
   }
 
 }
