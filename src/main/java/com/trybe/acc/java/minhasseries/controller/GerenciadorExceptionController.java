@@ -40,11 +40,11 @@ public class GerenciadorExceptionController {
   }
 
   /** Método que recebe a exceção Fallback.*/
-  @ExceptionHandler(Exception.class)
-  public ResponseEntity<HashMap<String, String>> handleFallback() {
-    HashMap<String, String> mensagem = new HashMap<String, String>();
-    mensagem.put("error", "Serviço temporariamente indisponível");
-    return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(mensagem);
-  }
+  //@ExceptionHandler(Exception.class)
+  //public ResponseEntity<HashMap<String, String>> handleFallback() {
+  //  HashMap<String, String> mensagem = new HashMap<String, String>();
+  //  mensagem.put("error", "Serviço temporariamente indisponível");
+  //  return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(mensagem);
+  //}
 
 }

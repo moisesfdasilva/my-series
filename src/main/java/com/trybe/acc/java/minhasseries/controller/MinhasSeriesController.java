@@ -3,7 +3,7 @@ package com.trybe.acc.java.minhasseries.controller;
 import com.trybe.acc.java.minhasseries.model.Episodio;
 import com.trybe.acc.java.minhasseries.model.Serie;
 import com.trybe.acc.java.minhasseries.service.MinhasSeriesService;
-import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+//import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +41,7 @@ public class MinhasSeriesController {
     return ResponseEntity.ok("Id removido: " + idRemovido);
   }
 
-  @CircuitBreaker(name = "minhasSeries", fallbackMethod = "fallback")
+  //@CircuitBreaker(name = "minhasSeries", fallbackMethod = "fallback")
   @PostMapping("/series/{id}/episodios")
   public ResponseEntity<Serie> addEpisodio(@PathVariable("id") Integer id,
       @RequestBody Episodio episodio) {

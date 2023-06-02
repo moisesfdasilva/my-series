@@ -1,8 +1,8 @@
-resilience4j.circuitbreaker:
-  configs:
-    default:
-      waitDurationInOpenState: 60s
-      failureRateThreshold: 50
-  instances:
-    minhasSeries:
-      baseConfig: default
+#resilience4j.circuitbreaker:
+#  configs:
+#    default:
+#      waitDurationInOpenState: 60s
+#      failureRateThreshold: 50
+#  instances:
+#    minhasSeries:
+#      baseConfig: default
