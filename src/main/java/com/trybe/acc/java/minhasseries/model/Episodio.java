@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 public class Episodio {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
   private Integer numero;
   private Integer duracaoEmMinutos;

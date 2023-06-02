@@ -3,11 +3,16 @@ package com.trybe.acc.java.minhasseries;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
-public class SpecialityAppApplication {
 
+/**
+ * Inicializador da aplicação SpringBoot.
+ */
+
+@SpringBootApplication
+public class MinhasSeriesApp {
+  
   public static void main(String[] args) {
-    SpringApplication.run(SpecialityAppApplication.class, args);
+    SpringApplication.run(MinhasSeriesApp.class, args);
   }
 
 }
