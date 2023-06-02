@@ -18,7 +18,6 @@ public class GerenciadorExceptionController {
       SerieExistenteException exception) {
     HashMap<String, String> mensagem = new HashMap<String, String>();
     mensagem.put("error", exception.getMessage());
-    System.out.println(mensagem);
     return ResponseEntity.status(HttpStatus.CONFLICT).body(mensagem);
   }
 
@@ -28,7 +27,6 @@ public class GerenciadorExceptionController {
       SerieNaoEncontradaException exception) {
     HashMap<String, String> mensagem = new HashMap<String, String>();
     mensagem.put("error", exception.getMessage());
-    System.out.println(mensagem);
     return ResponseEntity.status(HttpStatus.NOT_FOUND).body(mensagem);
   }
 
@@ -38,8 +36,14 @@ public class GerenciadorExceptionController {
       EpisodioExistenteException exception) {
     HashMap<String, String> mensagem = new HashMap<String, String>();
     mensagem.put("error", exception.getMessage());
-    System.out.println(mensagem);
     return ResponseEntity.status(HttpStatus.CONFLICT).body(mensagem);
+  }
+
+  @ExceptionHandler(Exception.class)
+  private ResponseEntity<HashMap<String, String>> fallback() {
+    HashMap<String, String> mensagem = new HashMap<String, String>();
+    mensagem.put("error", "Serviço temporariamente indisponível");
+    return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(mensagem);
   }
 
 }
