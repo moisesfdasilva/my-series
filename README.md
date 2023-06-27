@@ -4,10 +4,11 @@
 Aplicação desenvolvida para disponibilizar uma API com funcionalidades de criar, ler, modificar e deletar informações relativas às séries assistidas pela pessoa usuária.
 
 ## Tecnologias e Ferramentas empregadas
+
 Maven;
 Java 11;
 JUnit 5;
-Spring-Boot;
+Spring-Boot; e 
 H2 Database.
 
 ## Status do Projeto
@@ -27,15 +28,16 @@ B. Instalar a aplicação pelo Maven, através do comando:
   $ mvn install
 
 C. Iniciar a aplicação pelo comando:
+
   $ mvn spring-boot:run
 
 D. Acessar a API, nas seguintes rotas:
-	1. Post, em http://localhost:8080/series, contendo o body {}, cadastra uma nova série.
-	2. Get, em http://localhost:8080/series, exibe a lista de todas as séries cadastradas.
-	3. Delete, em http://localhost:8080/series/{id}, deleta o cadastro da série conforme o id especificado na rota.
-	4. Post, em http://localhost:8080/series/{id}/episodios, contendo o body {}, cadastra os episódios da série conforme o id especificado na rota.
-	5. Get, em http://localhost:8080/series/{id}/episodios, exibe a lista de todos os episódios das séries cadastradas conforme o id especificado na rota.
-	6. Get, em http://localhost:8080/series/{id}/episodios, apresenta a quantidade de minutos das séries cadastradas.
+1. Post, em http://localhost:8080/series, contendo o body { "nome": "nome da série" }, cadastra uma nova série.
+2. Get, em http://localhost:8080/series, exibe a lista com todas as séries cadastradas.
+3. Delete, em http://localhost:8080/series/{id}, deleta o cadastro da série conforme o id especificado na rota.
+4. Post, em http://localhost:8080/series/{id}/episodios, contendo o body { "numero": , "duracaoEmMinutos": }, cadastra os episódios da série conforme o id especificado na rota.
+5. Get, em http://localhost:8080/series/{id}/episodios, exibe a lista de todos os episódios das séries cadastradas conforme o id especificado na rota.
+6. Get, em http://localhost:8080/series/{id}/episodios, apresenta a quantidade de minutos das séries cadastradas.
 
 ## Contribuintes
 |Nome|GitHub|
