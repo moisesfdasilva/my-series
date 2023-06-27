@@ -37,7 +37,7 @@ D. Acessar a API, nas seguintes rotas:
 3. Delete, em http://localhost:8080/series/{id}, deleta o cadastro da série, conforme o id especificado na rota.
 4. Post, em http://localhost:8080/series/{id}/episodios, contendo o body { "numero": Integer, "duracaoEmMinutos": Integer }, cadastra os episódios da série, conforme o id especificado na rota.
 5. Get, em http://localhost:8080/series/{id}/episodios, exibe uma lista com todos os episódios da série cadastrada, conforme o id especificado na rota.
-6. Get, em http://localhost:8080/series/{id}/episodios, apresenta o valor total em minutos dos episódios das séries cadastradas.
+6. Get, em http://localhost:8080/series/{id}/episodios, apresenta o valor total da duração dos episódios das séries cadastradas em minutos.
 
 ## Contribuintes
 |Nome|GitHub|
