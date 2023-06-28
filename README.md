@@ -8,7 +8,7 @@ Aplicação desenvolvida para disponibilizar uma API com funcionalidades de cria
 Maven;
 Java 11;
 JUnit 5;
-Spring-Boot; e 
+Spring; e 
 H2 Database.
 
 ## Status do Projeto
